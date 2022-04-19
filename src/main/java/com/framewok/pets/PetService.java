@@ -1,4 +1,4 @@
-package guru.framework.sfgdi.services;
+package com.framewok.pets;
 
 public interface PetService {
 

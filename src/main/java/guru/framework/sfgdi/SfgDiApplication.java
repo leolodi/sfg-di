@@ -1,6 +1,7 @@
 package guru.framework.sfgdi;
 
 import guru.framework.sfgdi.config.SfgConfiguration;
+import guru.framework.sfgdi.config.SfgConstructor;
 import guru.framework.sfgdi.controllers.*;
 import guru.framework.sfgdi.datasource.FakeDataSource;
 import guru.framework.sfgdi.services.PrototypeBean;
@@ -62,5 +63,11 @@ public class SfgDiApplication {
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());
 		System.out.println(sfgConfiguration.getJdbcurl());
+
+		System.out.println("------ Constructor Binding");
+		SfgConstructor sfgConstructor = ctx.getBean(SfgConstructor.class);
+		System.out.println(sfgConstructor.getUsername());
+		System.out.println(sfgConstructor.getPassword());
+		System.out.println(sfgConstructor.getJdbcurl());
 	}
 }

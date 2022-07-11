@@ -7,18 +7,20 @@ import guru.framework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.framework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.framework.sfgdi.services.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
+@EnableConfigurationProperties(SfgConstructor.class)
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration) {
+    FakeDataSource fakeDataSource(SfgConstructor sfgConstructor) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(sfgConfiguration.getUsername());
-        fakeDataSource.setPassword(sfgConfiguration.getPassword());
-        fakeDataSource.setJdbcurl(sfgConfiguration.getJdbcurl());
+        fakeDataSource.setUsername(sfgConstructor.getUsername());
+        fakeDataSource.setPassword(sfgConstructor.getPassword());
+        fakeDataSource.setJdbcurl(sfgConstructor.getJdbcurl());
 
         return fakeDataSource;
     }
